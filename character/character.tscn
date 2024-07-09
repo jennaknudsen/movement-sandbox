@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cemj1kgly708"]
+[gd_scene load_steps=15 format=3 uid="uid://cemj1kgly708"]
 
 [ext_resource type="Texture2D" uid="uid://dkaugxm504q5u" path="res://character/idle/box.png" id="1_ubfy1"]
 [ext_resource type="Script" path="res://character/WeaponFrontSprite.gd" id="1_ull68"]
@@ -18,7 +18,79 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scb48"]
+size = Vector2(200, 200)
+
+[sub_resource type="Animation" id="Animation_3fgto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponFrontSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponBackSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/WeaponCollision:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D/WeaponCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D/WeaponCollision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_15txe"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_iapwd"]
+points = PackedVector2Array(-39, 207, 23, -16, 310, -36, 280, 100, 148, 185)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2hwp7"]
+points = PackedVector2Array(-39, 207, -121, -217, 92, -213, 231, -159, 310, -36, 280, 100, 148, 185)
 
 [sub_resource type="Animation" id="Animation_0qdth"]
 resource_name = "sword_slice"
@@ -44,25 +116,46 @@ tracks/1/path = NodePath("WeaponBackSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.183333),
+"times": PackedFloat32Array(0, 0.05, 0.183334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [null, ExtResource("6_c0kax"), null]
 }
-
-[sub_resource type="Animation" id="Animation_3fgto"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponFrontSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/WeaponCollision:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333334, 0.0500001, 0.183334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [null, SubResource("ConvexPolygonShape2D_iapwd"), SubResource("ConvexPolygonShape2D_2hwp7"), null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D/WeaponCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333334, 0.183334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D/WeaponCollision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qyx8w"]
@@ -76,18 +169,30 @@ _data = {
 [node name="WeaponFrontSprite" type="Sprite2D" parent="."]
 z_index = 3
 script = ExtResource("1_ull68")
+metadata/_edit_lock_ = true
 
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_er17q")
 animation = &"idle"
+metadata/_edit_lock_ = true
 
 [node name="WeaponBackSprite" type="Sprite2D" parent="."]
 z_index = 1
+metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="PlayerCollision" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_scb48")
+metadata/_edit_lock_ = true
+
+[node name="WeaponCollision" type="CollisionShape2D" parent="CharacterBody2D"]
+z_index = 3
+z_as_relative = false
+disabled = true
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
