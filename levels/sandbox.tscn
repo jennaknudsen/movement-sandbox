@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b887ydg303551"]
+[gd_scene load_steps=3 format=3 uid="uid://b887ydg303551"]
 
-[ext_resource type="Texture2D" uid="uid://d17ypfc8m2lx3" path="res://levels/Background.png" id="1_5io08"]
+[ext_resource type="Texture2D" uid="uid://bu3aehtvql8fu" path="res://levels/sandbox.png" id="1_ctx0a"]
+[ext_resource type="PackedScene" uid="uid://cemj1kgly708" path="res://character/character.tscn" id="2_207d1"]
 
 [node name="World" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-texture = ExtResource("1_5io08")
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_ctx0a")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Character" parent="." instance=ExtResource("2_207d1")]
+position = Vector2(970, 692)
