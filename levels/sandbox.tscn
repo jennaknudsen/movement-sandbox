@@ -14,10 +14,6 @@ texture = ExtResource("1_ctx0a")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Character" parent="." instance=ExtResource("2_207d1")]
-z_index = 2
-position = Vector2(1260, 600)
-
 [node name="StaticWall" parent="." instance=ExtResource("3_qkclk")]
 z_index = 2
 scale = Vector2(1, 9)
@@ -25,18 +21,31 @@ metadata/_edit_lock_ = true
 
 [node name="StaticWall2" parent="." instance=ExtResource("3_qkclk")]
 position = Vector2(120, 480)
-scale = Vector2(5, 1)
+scale = Vector2(4, 1)
+metadata/_edit_lock_ = true
 
 [node name="StaticWall3" parent="." instance=ExtResource("3_qkclk")]
 position = Vector2(120, 960)
 scale = Vector2(14, 1)
+metadata/_edit_lock_ = true
 
 [node name="StaticWall4" parent="." instance=ExtResource("3_qkclk")]
 z_index = 2
 position = Vector2(1800, 0)
 scale = Vector2(1, 9)
+metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("4_pwsap")
 centered = false
 metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_207d1")]
+position = Vector2(960, 300)
+
+[node name="WeaponCollision" parent="CharacterBody2D" index="1"]
+polygon = PackedVector2Array()
+disabled = true
+
+[editable path="StaticWall2"]
+[editable path="CharacterBody2D"]
