@@ -41,11 +41,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_207d1")]
-position = Vector2(960, 300)
-
-[node name="WeaponCollision" parent="CharacterBody2D" index="1"]
-polygon = PackedVector2Array()
-disabled = true
+position = Vector2(420, 255)
 
 [editable path="StaticWall2"]
 [editable path="CharacterBody2D"]
