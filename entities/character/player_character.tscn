@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://cemj1kgly708"]
 
-[ext_resource type="Script" path="res://character/character.gd" id="1_kcf1s"]
-[ext_resource type="Texture2D" uid="uid://dkaugxm504q5u" path="res://character/idle/box.png" id="1_ubfy1"]
-[ext_resource type="Texture2D" uid="uid://xw4crw3kpt6p" path="res://character/sword-slice/slice_1.png" id="2_q5j13"]
-[ext_resource type="Texture2D" uid="uid://drnjje8wak0ko" path="res://character/sword-slice/slice_3.png" id="4_cyhrl"]
-[ext_resource type="Texture2D" uid="uid://ccr87g84u45qy" path="res://character/sword-slice/slice_4_1.png" id="5_q17fh"]
-[ext_resource type="Texture2D" uid="uid://ov6k8m6befyw" path="res://character/sword-slice/slice_4_2.png" id="6_c0kax"]
+[ext_resource type="Script" path="res://entities/character/player_character.gd" id="1_0pi7f"]
+[ext_resource type="Texture2D" uid="uid://dkaugxm504q5u" path="res://entities/character/idle/box.png" id="1_ubfy1"]
+[ext_resource type="Texture2D" uid="uid://xw4crw3kpt6p" path="res://entities/character/sword-slice/slice_1.png" id="2_q5j13"]
+[ext_resource type="Texture2D" uid="uid://drnjje8wak0ko" path="res://entities/character/sword-slice/slice_3.png" id="4_cyhrl"]
+[ext_resource type="Texture2D" uid="uid://ccr87g84u45qy" path="res://entities/character/sword-slice/slice_4_1.png" id="5_q17fh"]
+[ext_resource type="Texture2D" uid="uid://ov6k8m6befyw" path="res://entities/character/sword-slice/slice_4_2.png" id="6_c0kax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scb48"]
 size = Vector2(200, 200)
@@ -50,7 +50,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../CharacterBody2D/WeaponCollision:disabled")
+tracks/2/path = NodePath("WeaponCollision:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -62,7 +62,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../CharacterBody2D/WeaponCollision:position")
+tracks/3/path = NodePath("WeaponCollision:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -74,7 +74,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../CharacterBody2D/WeaponCollision:polygon")
+tracks/4/path = NodePath("WeaponCollision:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -117,7 +117,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../CharacterBody2D/WeaponCollision:disabled")
+tracks/2/path = NodePath("WeaponCollision:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -129,7 +129,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../CharacterBody2D/WeaponCollision:position")
+tracks/3/path = NodePath("WeaponCollision:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -141,7 +141,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../CharacterBody2D/WeaponCollision:polygon")
+tracks/4/path = NodePath("WeaponCollision:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -157,9 +157,9 @@ _data = {
 "sword_slice": SubResource("Animation_0qdth")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="PlayerCharacter" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_kcf1s")
+script = ExtResource("1_0pi7f")
 metadata/_edit_lock_ = true
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]

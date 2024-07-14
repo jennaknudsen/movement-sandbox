@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b887ydg303551"]
+[gd_scene load_steps=6 format=3 uid="uid://b887ydg303551"]
 
 [ext_resource type="Texture2D" uid="uid://bu3aehtvql8fu" path="res://levels/sandbox.png" id="1_ctx0a"]
-[ext_resource type="PackedScene" uid="uid://cemj1kgly708" path="res://character/character.tscn" id="2_207d1"]
+[ext_resource type="PackedScene" uid="uid://b0ilk1qi1qdlj" path="res://globals/game_state_label.tscn" id="1_cv5o8"]
+[ext_resource type="PackedScene" uid="uid://cemj1kgly708" path="res://entities/character/player_character.tscn" id="2_207d1"]
 [ext_resource type="PackedScene" uid="uid://sbyshp5ihkmh" path="res://terrain/terrain_types/static_wall.tscn" id="3_qkclk"]
 [ext_resource type="Texture2D" uid="uid://d17ypfc8m2lx3" path="res://levels/background.png" id="4_pwsap"]
 
 [node name="World" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Label" parent="." node_paths=PackedStringArray("player_character") instance=ExtResource("1_cv5o8")]
+z_index = 3
+offset_right = 225.0
+offset_bottom = 75.0
+player_character = NodePath("../PlayerCharacter")
 
 [node name="Template" type="Sprite2D" parent="."]
 visible = false
@@ -40,8 +48,7 @@ texture = ExtResource("4_pwsap")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_207d1")]
-position = Vector2(420, 255)
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_207d1")]
+position = Vector2(450, 390)
 
 [editable path="StaticWall2"]
-[editable path="CharacterBody2D"]
