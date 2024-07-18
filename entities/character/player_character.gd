@@ -40,6 +40,7 @@ func _physics_process(delta):
     if Input.is_action_just_pressed("jump") and _can_floor_jump():
         #emit_signal("is_jumping")
         state = States.JUMPSQUAT
+        $AnimationPlayer.play("jump")
 
     # perform various actions based on state
     match state:
