@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name PlayerCharacter
+@export var animation_player : AnimationPlayer
 
 const RUN_SPEED = 500.0
 # character should get up to speed in 0.1 seconds
@@ -17,6 +18,7 @@ enum States {
     WALKING,
     JUMPSQUAT,
     AIRBORNE,
+    ON_WALL,
 }
 
 @export var state: States = States.IDLE
@@ -25,7 +27,7 @@ enum States {
 # var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-    $AnimationPlayer.play("RESET")
+    animation_player.play("RESET")
     jump_action.connect("startup_time_finished", jump)
 
 func _physics_process(delta):
@@ -40,7 +42,7 @@ func _physics_process(delta):
     if Input.is_action_just_pressed("jump") and _can_floor_jump():
         #emit_signal("is_jumping")
         state = States.JUMPSQUAT
-        $AnimationPlayer.play("jump")
+        animation_player.play("jump")
 
     # perform various actions based on state
     match state:
@@ -70,6 +72,8 @@ func determine_state() -> States:
             return States.IDLE
         else:
             return States.WALKING
+    elif is_on_wall():
+        return States.ON_WALL
     else:
         return States.AIRBORNE
 
