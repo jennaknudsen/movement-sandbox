@@ -8,7 +8,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +25,7 @@ step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -47,6 +47,9 @@ _data = {
 "sword_slice": SubResource("Animation_0qdth")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scb48"]
+size = Vector2(200, 200)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_er17q"]
 animations = [{
 "frames": [{
@@ -58,10 +61,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_scb48"]
-size = Vector2(200, 200)
-
-[node name="Player" type="Node2D"]
+[node name="PlayerRoot" type="Node2D"]
 metadata/_edit_lock_ = true
 
 [node name="WeaponCollision" type="Area2D" parent="."]
@@ -85,26 +85,26 @@ scale = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../PlayerTransform/PlayerCharacter")
+root_node = NodePath("../Player/PlayerCharacter")
 libraries = {
 "": SubResource("AnimationLibrary_qyx8w")
 }
 
-[node name="PlayerTransform" type="Node2D" parent="."]
+[node name="Player" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="PlayerCharacter" type="CharacterBody2D" parent="PlayerTransform" node_paths=PackedStringArray("animation_player")]
-position = Vector2(2.08165e-12, -100)
+[node name="PlayerCharacter" type="CharacterBody2D" parent="Player" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_0pi7f")
 animation_player = NodePath("../../AnimationPlayer")
 metadata/_edit_lock_ = true
 
-[node name="CharacterSprite" type="AnimatedSprite2D" parent="PlayerTransform/PlayerCharacter"]
+[node name="PlayerCollision" type="CollisionShape2D" parent="Player/PlayerCharacter"]
+position = Vector2(2.08165e-12, -100)
+shape = SubResource("RectangleShape2D_scb48")
+metadata/_edit_lock_ = true
+
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="Player/PlayerCharacter/PlayerCollision"]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_er17q")
 animation = &"idle"
-metadata/_edit_lock_ = true
-
-[node name="PlayerCollision" type="CollisionShape2D" parent="PlayerTransform/PlayerCharacter"]
-shape = SubResource("RectangleShape2D_scb48")
 metadata/_edit_lock_ = true

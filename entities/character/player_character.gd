@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name PlayerCharacter
+class_name Player
 @export var animation_player : AnimationPlayer
 
 const RUN_SPEED = 500.0
@@ -36,7 +36,6 @@ func _physics_process(delta):
     # Add the gravity.
     if not is_on_floor():
         velocity.y += GRAVITY * delta
-    is_on_wall()
 
     # Handle all inputs
     if Input.is_action_just_pressed("jump") and _can_floor_jump():
@@ -78,7 +77,8 @@ func determine_state() -> States:
         return States.AIRBORNE
 
 func _can_floor_jump():
-    return state != States.JUMPSQUAT and is_on_floor()
+    #return state != States.JUMPSQUAT and is_on_floor()
+    return true
 
 func jump():
     velocity.y = JUMP_VELOCITY
